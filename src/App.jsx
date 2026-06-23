@@ -7,37 +7,47 @@ import {
   Products,
   ProductDetails,
   Cart,
+  Favourites,
+  Payment,
+  Account,
 } from "./components";
 import { Container } from "react-bootstrap";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-
-  async function fetchProducts() {
-    try {
-      const res = await fetch("https://dummyjson.com/products");
-      const data = await res.json();
-      setProducts(data.products);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await fetch("https://dummyjson.com/products?limit=200");
+        const data = await res.json();
+        setProducts(data.products);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     fetchProducts();
   }, []);
 
   return (
     <>
-      <AppNavbar cart={cart} />
+      <AppNavbar cart={cart} favourites={favourites} />
       <Container className="mt-3">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route
             path="/products"
             element={
-              <Products products={products} cart={cart} setCart={setCart} />
+              <Products
+                products={products}
+                favourites={favourites}
+                setFavourites={setFavourites}
+                cart={cart}
+                setCart={setCart}
+              />
             }
           />
           <Route
@@ -45,6 +55,8 @@ function App() {
             element={
               <ProductDetails
                 products={products}
+                favourites={favourites}
+                setFavourites={setFavourites}
                 cart={cart}
                 setCart={setCart}
               />
@@ -54,6 +66,20 @@ function App() {
             path="/cart"
             element={<Cart products={products} cart={cart} setCart={setCart} />}
           />
+          <Route
+            path="/favourites"
+            element={
+              <Favourites
+                products={products}
+                favourites={favourites}
+                setFavourites={setFavourites}
+                cart={cart}
+                setCart={setCart}
+              />
+            }
+          />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </Container>
     </>

@@ -1,45 +1,79 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import star from '../../assets/star-rating.png'
-import './index.css'
-import { Link } from 'react-router'
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import star from "../../assets/star-rating.png";
+import "./index.css";
+import { Link } from "react-router";
 
-function Products({ products, cart, setCart }) {
+function Products({ products, favourites, setFavourites, cart, setCart }) {
+  const kitchenProducts = products.filter((product) =>
+    ["kitchen-accessories"].includes(product.category),
+  );
+
+  console.log(products.map((product) => product.category));
+
   return (
     <div>
-      {products.map(product => (
-        <Card className='d-flex flex-row mt-2' key={product.id}>
-          <Card.Img variant="top" src={product.thumbnail} className='product-img' />
-          <Card.Body className='d-flex flex-column justify-content-between'>
+      <h3>Kitchen Essentials</h3>
+      <p>Practical tools and accessories for today's modern chef.</p>
+
+      {kitchenProducts.map((product) => (
+        <Card
+          className="d-flex flex-column flex-md-row mt-1 mb-2"
+          key={product.id}
+        >
+          <Card.Img
+            variant="top"
+            src={product.thumbnail}
+            className="product-img"
+          />
+          <Card.Body className="d-flex flex-column justify-content-between">
             <div>
               <Card.Title>{product.title}</Card.Title>
               <Card.Text>
-                {product.rating}
-                {' '}
-                {[...new Array(Math.round(product.rating))].map((s, index) => (
-                  <img src={star} width={12} key={index} />
-                ))}
-                {' '}
-                ({product.reviews.length})
+                <span className="fs-2">${product.price}</span> (
+                {Math.round(product.discountPercentage)}% discount)
               </Card.Text>
               <Card.Text>
-                <span className='fs-2'>${product.price}</span>
-                {' '}
-                ({product.discountPercentage}% off)
+                {product.rating}{" "}
+                {[...new Array(Math.round(product.rating))].map((s, index) => (
+                  <img src={star} width={12} key={index} />
+                ))}{" "}
+                ({product.reviews.length})
               </Card.Text>
-              <Card.Text className='badge text-bg-secondary'>{product.warrantyInformation}</Card.Text>
-              <Card.Text>{product.shippingInformation} | {product.returnPolicy}</Card.Text>
             </div>
-            <div>
-              <Link to={`/product-details/${product.id}`} className='btn btn-primary add-to-cart-btn rounded-pill'>View details</Link>{' '}
-              <Button 
-                variant='warning' 
-                className='add-to-cart-btn rounded-pill mt-2' 
-                onClick={() => setCart([...cart, product.id])} 
-                disabled={cart.includes(product.id)}
-              >
-                {cart.includes(product.id) ? 'Added to cart' : 'Add to cart'}
-              </Button>
+            <div className="row g-2">
+              <div className="col-12 col-lg-6">
+                <Link
+                  to={`/product-details/${product.id}`}
+                  className="btn btn-primary w-100"
+                >
+                  View details
+                </Link>
+              </div>
+
+              <div className="col-12 col-lg-6">
+                <Button
+                  variant="primary"
+                  className="w-100"
+                  onClick={() => setFavourites([...favourites, product.id])}
+                  disabled={favourites.includes(product.id)}
+                >
+                  {favourites.includes(product.id)
+                    ? "Added to favourites"
+                    : "Add to favourites"}
+                </Button>
+              </div>
+
+              <div className="col-12 col-lg-6">
+                <Button
+                  variant="primary"
+                  className="w-100"
+                  onClick={() => setCart([...cart, product.id])}
+                  disabled={cart.includes(product.id)}
+                >
+                  {cart.includes(product.id) ? "Added to cart" : "Add to cart"}
+                </Button>
+              </div>
             </div>
           </Card.Body>
         </Card>

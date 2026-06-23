@@ -1,7 +1,16 @@
 .product-detail-img {
-  max-width: 500px;
+  width: 100%;
+  max-width: 350px;
+  object-fit: contain;
+  padding: 1rem;
 }
 
-.add-to-cart-btn {
-  width: 300px;
+@media (max-width: 768px) {
+  .product-detail-img {
+    max-width: 100%;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+  }
 }
