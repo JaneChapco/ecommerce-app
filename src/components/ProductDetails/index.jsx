@@ -14,7 +14,7 @@ function ProductDetails({
 }) {
   const { id } = useParams();
 
-  const product = products.find((p) => p.id == id);
+  const product = products.find((p) => p.id === Number(id));
 
   if (!product) {
     return <p className="lead">Product not found</p>;
@@ -52,8 +52,7 @@ function ProductDetails({
           </div>
           <div className="col-12 col-lg-6">
             <Button
-              variant="primary"
-              className="w-100"
+              className="action-btn btn-products w-100 mt-2"
               onClick={() => setFavourites([...favourites, product.id])}
               disabled={favourites.includes(product.id)}
             >
@@ -63,8 +62,7 @@ function ProductDetails({
             </Button>
           </div>
           <Button
-            variant="primary"
-            className="add-to-cart-btn mt-2 mb-2"
+            className="action-btn btn-products w-100 mt-2"
             onClick={() => setCart([...cart, product.id])}
             disabled={cart.includes(product.id)}
           >

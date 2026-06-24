@@ -9,8 +9,6 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
     ["kitchen-accessories"].includes(product.category),
   );
 
-  console.log(products.map((product) => product.category));
-
   return (
     <div>
       <h3>Kitchen Essentials</h3>
@@ -45,7 +43,7 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
               <div className="col-12 col-lg-6">
                 <Link
                   to={`/product-details/${product.id}`}
-                  className="btn btn-primary w-100"
+                  className="action-btn btn-products w-100 mt-2"
                 >
                   View details
                 </Link>
@@ -53,8 +51,7 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
 
               <div className="col-12 col-lg-6">
                 <Button
-                  variant="primary"
-                  className="w-100"
+                  className="action-btn btn-products w-100 mt-2"
                   onClick={() => setFavourites([...favourites, product.id])}
                   disabled={favourites.includes(product.id)}
                 >
@@ -66,8 +63,7 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
 
               <div className="col-12 col-lg-6">
                 <Button
-                  variant="primary"
-                  className="w-100"
+                  className="action-btn btn-products w-100 mt-2"
                   onClick={() => setCart([...cart, product.id])}
                   disabled={cart.includes(product.id)}
                 >

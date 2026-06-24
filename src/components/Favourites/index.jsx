@@ -18,7 +18,7 @@ function Favourites({ products, favourites, setFavourites, cart, setCart }) {
         <>
           <div className="col-12 col-lg-6">
             <h2>Your favourites list is empty</h2>
-            <Link to="/products" className="btn btn-primary w-100">
+            <Link to="/products" className="action-btn btn-products w-100 mt-2">
               Start shopping
             </Link>
           </div>
@@ -56,15 +56,14 @@ function Favourites({ products, favourites, setFavourites, cart, setCart }) {
             <div className="col-12 col-lg-6">
               <Link
                 to={`/product-details/${product.id}`}
-                className="btn btn-primary w-100"
+                className="action-btn btn-products w-100 mt-2"
               >
                 View details
               </Link>
             </div>
             <div className="col-12 col-lg-6">
               <Button
-                variant="primary"
-                className="w-100"
+                className="action-btn btn-products w-100 mt-2"
                 onClick={() => setCart([...cart, product.id])}
                 disabled={cart.includes(product.id)}
               >
@@ -74,7 +73,7 @@ function Favourites({ products, favourites, setFavourites, cart, setCart }) {
             <div className="col-12 col-lg-6">
               <Button
                 variant="danger"
-                className="add-to-cart-btn mt-2"
+                className="action-btn btn-remove w-100 mt-2"
                 onClick={() => handleRemoveItem(product.id)}
               >
                 Remove from favourites

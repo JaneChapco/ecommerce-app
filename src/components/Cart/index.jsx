@@ -21,7 +21,7 @@ function Cart({ products, cart, setCart }) {
       {cartProducts.length === 0 ? (
         <div className="col-12 col-lg-6">
           <h2>Your cart is empty</h2>
-          <Link to="/products" className="btn btn-primary w-100">
+          <Link to="/products" className="action-btn btn-products w-100 mt-2">
             Start shopping
           </Link>
         </div>
@@ -66,8 +66,7 @@ function Cart({ products, cart, setCart }) {
                 </div>
 
                 <Button
-                  variant="danger"
-                  className="add-to-cart-btn mt-2"
+                  className="action-btn btn-remove mt-2 w-100"
                   onClick={() => handleRemoveItem(product.id)}
                 >
                   Remove from cart
@@ -85,13 +84,13 @@ function Cart({ products, cart, setCart }) {
               </Card.Text>
 
               <div className="col-12 col-lg-6 mb-2">
-                <Link to="/products" className="btn btn-primary w-100">
+                <Link to="/products" className="action-btn btn-products w-100">
                   Continue shopping
                 </Link>
               </div>
 
               <div className="col-12 col-lg-6 mb-2">
-                <Link to="/payment" className="btn btn-primary w-100">
+                <Link to="/payment" className="action-btn btn-payment w-100">
                   Proceed to payment
                 </Link>
               </div>

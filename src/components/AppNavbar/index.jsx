@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router";
 import "./index.css";
 
-function AppNavbar({ favourites, cart }) {
+function AppNavbar({ favourites = [], cart = [] }) {
   return (
     <Navbar collapseOnSelect expand="lg" className="custom-navbar">
       <Container>
