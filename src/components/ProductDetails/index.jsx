@@ -22,11 +22,11 @@ function ProductDetails({
 
   return (
     <div>
-      <Card className="d-flex flex-column flex-md-row">
+      <Card className="d-flex flex-column flex-md-row mb-3">
         <Card.Img
           variant="top"
           src={product.images[0]}
-          className="product-detail-img"
+          className="product-img"
         />
         <Card.Body className="d-flex flex-column justify-content-between">
           <div>

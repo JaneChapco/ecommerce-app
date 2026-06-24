@@ -43,6 +43,7 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
               <div className="col-12 col-lg-6">
                 <Link
                   to={`/product-details/${product.id}`}
+                  variant=""
                   className="action-btn btn-products w-100 mt-2"
                 >
                   View details
@@ -51,6 +52,7 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
 
               <div className="col-12 col-lg-6">
                 <Button
+                  variant=""
                   className="action-btn btn-products w-100 mt-2"
                   onClick={() => setFavourites([...favourites, product.id])}
                   disabled={favourites.includes(product.id)}
@@ -63,6 +65,7 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
 
               <div className="col-12 col-lg-6">
                 <Button
+                  variant=""
                   className="action-btn btn-products w-100 mt-2"
                   onClick={() => setCart([...cart, product.id])}
                   disabled={cart.includes(product.id)}
