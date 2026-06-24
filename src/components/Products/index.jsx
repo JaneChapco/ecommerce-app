@@ -26,7 +26,9 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
           />
           <Card.Body className="d-flex flex-column justify-content-between">
             <div>
-              <Card.Title>{product.title}</Card.Title>
+              <Card.Title>
+                <h3>{product.title}</h3>
+              </Card.Title>
               <Card.Text>
                 <span className="fs-2">${product.price}</span> (
                 {Math.round(product.discountPercentage)}% discount)
@@ -40,20 +42,19 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
               </Card.Text>
             </div>
             <div className="row g-2">
-              <div className="col-12 col-lg-6">
+              <div className="col-12 col-lg-4">
                 <Link
                   to={`/product-details/${product.id}`}
                   variant=""
-                  className="action-btn btn-products w-100 mt-2"
+                  className="action-btn btn-details w-100 mt-2"
                 >
                   View details
                 </Link>
               </div>
 
-              <div className="col-12 col-lg-6">
+              <div className="col-12 col-lg-4">
                 <Button
-                  variant=""
-                  className="action-btn btn-products w-100 mt-2"
+                  className="action-btn btn-favourite w-100 mt-2"
                   onClick={() => setFavourites([...favourites, product.id])}
                   disabled={favourites.includes(product.id)}
                 >
@@ -63,9 +64,8 @@ function Products({ products, favourites, setFavourites, cart, setCart }) {
                 </Button>
               </div>
 
-              <div className="col-12 col-lg-6">
+              <div className="col-12 col-lg-4">
                 <Button
-                  variant=""
                   className="action-btn btn-products w-100 mt-2"
                   onClick={() => setCart([...cart, product.id])}
                   disabled={cart.includes(product.id)}

@@ -23,41 +23,72 @@ body {
     height: 180px;
   }
 }
-
+/* Base shared button */
 .action-btn {
-  display: inline-block;
-  text-decoration: none;
-  padding: 12px 18px;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 5px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
+  text-decoration: none;
+  border: none !important;
   transition: 0.2s ease;
-  border: none;
 }
 
-.btn-products {
-  background-color: #a3b18a !important;
+/* Primary action: Add to cart / Checkout */
+.btn-products,
+.btn-payment {
+  background-color: #7a9e7e !important;
   color: white !important;
 }
 
-.btn-products:hover {
-  background-color: #8f9f76 !important;
+.btn-products:hover,
+.btn-payment:hover {
+  background-color: #5f7f63 !important;
   color: white !important;
 }
 
-.btn-products:disabled {
-  background-color: #c8c8b8 !important;
-  color: white !important;
-  opacity: 1;
+/* Secondary action: View details / Continue shopping */
+.btn-details {
+  background-color: #d8c3a5 !important;
+  color: #3f3025 !important;
 }
+
+.btn-details:hover {
+  background-color: #c6ad8d !important;
+  color: #3f3025 !important;
+}
+
+/* Favourite button */
+.btn-favourite {
+  background-color: #b56576 !important;
+  color: white !important;
+}
+
+.btn-favourite:hover {
+  background-color: #944d5f !important;
+  color: white !important;
+}
+
+/* Remove/delete */
 .btn-remove {
   background-color: #6b4f3a !important;
   color: white !important;
-  border: none !important;
 }
 
-.btn-payment {
-  background-color: navy;
-  color: white;
-  border: none;
+.btn-remove:hover {
+  background-color: #543b2b !important;
+  color: white !important;
+}
+
+/* Disabled */
+.action-btn:disabled,
+.action-btn.disabled {
+  background-color: #adada0 !important;
+  color: white !important;
+  opacity: 1;
+  border: none !important;
 }

@@ -30,7 +30,9 @@ function ProductDetails({
         />
         <Card.Body className="d-flex flex-column justify-content-between">
           <div>
-            <Card.Title>{product.title}</Card.Title>
+            <Card.Title>
+              <h3>{product.title}</h3>
+            </Card.Title>
             <Card.Text>
               {product.rating}{" "}
               {[...new Array(Math.round(product.rating))].map((s, index) => (
@@ -52,7 +54,7 @@ function ProductDetails({
           </div>
           <div className="col-12 col-lg-6">
             <Button
-              className="action-btn btn-products w-100 mt-2"
+              className="action-btn btn-favourite w-100 mt-2"
               onClick={() => setFavourites([...favourites, product.id])}
               disabled={favourites.includes(product.id)}
             >
@@ -61,13 +63,15 @@ function ProductDetails({
                 : "Add to favourites"}
             </Button>
           </div>
-          <Button
-            className="action-btn btn-products w-100 mt-2"
-            onClick={() => setCart([...cart, product.id])}
-            disabled={cart.includes(product.id)}
-          >
-            {cart.includes(product.id) ? "Added to cart" : "Add to cart"}
-          </Button>
+          <div className="col-12 col-lg-6">
+            <Button
+              className="action-btn btn-products w-100 mt-2"
+              onClick={() => setCart([...cart, product.id])}
+              disabled={cart.includes(product.id)}
+            >
+              {cart.includes(product.id) ? "Added to cart" : "Add to cart"}
+            </Button>
+          </div>
           <ListGroup as="ol" className="mt-3">
             <p className="fw-semibold mb-1">
               Reviews and ratings ({product.reviews.length})

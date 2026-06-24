@@ -56,7 +56,7 @@ function Favourites({ products, favourites, setFavourites, cart, setCart }) {
             <div className="col-12 col-lg-6">
               <Link
                 to={`/product-details/${product.id}`}
-                className="action-btn btn-products w-100 mt-2"
+                className="action-btn btn-details w-100 mt-2"
               >
                 View details
               </Link>

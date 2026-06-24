@@ -64,35 +64,44 @@ function Cart({ products, cart, setCart }) {
                     {product.shippingInformation} | {product.returnPolicy}
                   </Card.Text>
                 </div>
-
-                <Button
-                  className="action-btn btn-remove mt-2 w-100"
-                  onClick={() => handleRemoveItem(product.id)}
-                >
-                  Remove from cart
-                </Button>
+                <div className="col-12 col-lg-6">
+                  <Button
+                    className="action-btn btn-remove mt-2 w-100"
+                    onClick={() => handleRemoveItem(product.id)}
+                  >
+                    Remove from cart
+                  </Button>
+                </div>
               </Card.Body>
             </Card>
           ))}
 
           <Card className="mt-2 mb-2">
-            <Card.Header>Summary</Card.Header>
+            <Card.Header>
+              <h3>Summary</h3>
+            </Card.Header>
             <Card.Body>
-              <Card.Text className="fs-4">
-                Total Amount:{" "}
-                <span className="fw-semibold">${totalAmount.toFixed(2)}</span>
+              <Card.Text className="fs-2">
+                Cart Total:{" "}
+                <span className="fw-semibold d-4">
+                  ${totalAmount.toFixed(2)}
+                </span>
               </Card.Text>
+              <div className="row g-2">
+                <div className="col-12 col-lg-4 mb-2">
+                  <Link
+                    to="/products"
+                    className="action-btn btn-products w-100"
+                  >
+                    Continue shopping
+                  </Link>
+                </div>
 
-              <div className="col-12 col-lg-6 mb-2">
-                <Link to="/products" className="action-btn btn-products w-100">
-                  Continue shopping
-                </Link>
-              </div>
-
-              <div className="col-12 col-lg-6 mb-2">
-                <Link to="/payment" className="action-btn btn-payment w-100">
-                  Proceed to payment
-                </Link>
+                <div className="col-12 col-lg-4 mb-2">
+                  <Link to="/payment" className="action-btn btn-payment w-100">
+                    Proceed to payment
+                  </Link>
+                </div>
               </div>
             </Card.Body>
           </Card>
